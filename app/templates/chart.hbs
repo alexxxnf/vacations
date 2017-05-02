@@ -1,1 +1,15 @@
-{{my-chart model=model}}
+<div class="row">
+  <div class="col-md-6">
+    {{salary-input salary=salary avg_salary=avg_salary}}
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    {{my-chart model=model}}
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-6">
+    <p>Salary for the period: <b>{{salary_for_period}}</b>, Selling for the period: <b>{{selling_for_period}}</b></p>
+  </div>
+</div>

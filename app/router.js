@@ -7,7 +7,7 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-  this.route('chart');
+  this.route('chart', {path: '/:salary/:avg_salary'});
 });
 
 export default Router;

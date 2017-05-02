@@ -3,21 +3,21 @@ import Ember from 'ember';
 export default Ember.Component.extend({
     attributeBindings: ['style'],
     style: Ember.String.htmlSafe('height: 500px;'),
-    data_provider: Ember.computed('model.[]', function () {
-        let data = (this.get('model') || []).map(value => ({
-            date: value.date,
-            selling: parseFloat(value.selling.toFixed(2)),
-            salary: parseFloat(value.salary.toFixed(2))
-        }));
+    model_observer: Ember.observer('model', function (sender, key, value, rev) {
         let chart = this.get('chart');
-        if (chart) {
-            chart.dataProvider = data;
-            chart.validateData();
-        }
-
-        return data;
+		chart.dataProvider = this.prepareData(this.get('model'));
+		chart.validateData();
     }),
+	prepareData(data) {
+		let res = data.map(value => ({
+            date: value.date,
+            selling: Math.round(value.selling),
+            salary: Math.round(value.salary)
+        }));
+		return res;
+	},
     onSelected(e) {
+        console.log(this.get('model')[0]);
         let vacation_days = this.get('model').slice(e.startIndex, e.endIndex + 1);
         let total_salary = 0;
         let total_selling = 0;
@@ -36,15 +36,11 @@ export default Ember.Component.extend({
         let chart = AmCharts.makeChart(this.$()[0], {
             "type": "serial",
             "theme": "light",
-            "marginRight": 40,
-            "marginLeft": 40,
-            "autoMarginOffset": 20,
-            "dataProvider": this.get('data_provider'),
+            "dataProvider": this.prepareData(this.get('model')),
             "valueAxes": [{
                 "id": "v1",
                 "axisAlpha": 0,
                 "position": "left",
-                "ignoreAxisWidth": true
             }],
             "balloon": {
                 "borderThickness": 1,
@@ -93,17 +89,13 @@ export default Ember.Component.extend({
                 "selectWithoutZooming": true,
                 "valueLineAlpha": 0.2,
             },
-            "valueScrollbar": {
-                "oppositeAxis": false,
-                "offset": 50,
-                "scrollbarHeight": 10
-            },
             "categoryField": "date",
             "categoryAxis": {
                 "parseDates": true,
                 "dashLength": 1,
                 "minorGridEnabled": true
             },
+			"zoomOutOnDataUpdate": false,
         });
 
         chart.addListener("rendered", zoomChart);
@@ -111,7 +103,7 @@ export default Ember.Component.extend({
         zoomChart();
 
         function zoomChart() {
-            chart.zoomToIndexes(chart.dataProvider.length - 90, chart.dataProvider.length - 1);
+            chart.zoomToIndexes(chart.dataProvider.length - 60, chart.dataProvider.length - 1);
         }
 
         this.set('chart', chart);

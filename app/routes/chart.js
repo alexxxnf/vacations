@@ -1,16 +1,33 @@
 import Ember from 'ember';
 
+const DEFAULT_START_DATE = '2017-01-01';
+const DEFAULT_END_DATE = '2018-01-01';
+
 export default Ember.Route.extend({
-    start_date: '2017-01-01',
-    end_date: '2018-01-01',
     selling: Ember.inject.service('selling'),
-    model() {
-        let start_date = new Date(this.start_date);
-        let end_date = new Date(this.end_date);
-        let salary = 50000;
-        let avg_salary = 50000;
-        let model = this.get('selling').selling(salary, avg_salary, start_date, end_date);
+    model(params) {
+        this.set('params', params);
+
+        let start_date = new Date(DEFAULT_START_DATE);
+        let end_date = new Date(DEFAULT_END_DATE);
+        let model = this.get('selling').selling(params.salary, params.avg_salary, start_date, end_date);
 
         return model;
+    },
+    setupController(controller, model) {
+        this._super(controller, model);
+
+        controller.setProperties({
+            'salary': this.get('params').salary,
+            'avg_salary': this.get('params').avg_salary,
+            'salary_for_period': 0,
+            'selling_for_period': 0,
+            'updateSalary': this.actions.updateSalary.bind(this),
+        });
+    },
+    actions: {
+        updateSalary(salary, avg_salary) {
+            this.transitionTo(`/${salary}/${avg_salary}`);
+        }
     }
 });
