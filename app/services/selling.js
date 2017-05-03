@@ -1,44 +1,36 @@
 import Ember from 'ember';
 
+const HOLIDAY = 1;
+const DAY_OFF = 2;
 
 function holidays(year, month) {
     //  TODO: get it from Google
-    let holidays = {
-        2016: [
-            [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 16, 17, 23, 24, 30, 31],
-            [6, 7, 13, 14, 21, 22, 23, 27, 28],
-            [5, 6, 7, 8, 12, 13, 19, 20, 26, 27],
-            [2, 3, 9, 10, 16, 17, 23, 24, 30],
-            [1, 2, 3, 7, 8, 9, 14, 15, 21, 22, 28, 29],
-            [4, 5, 11, 12, 13, 18, 19, 25, 26],
-            [2, 3, 9, 10, 16, 17, 23, 24, 30, 31],
-            [6, 7, 13, 14, 20, 21, 27, 28],
-            [3, 4, 10, 11, 17, 18, 24, 25],
-            [1, 2, 8, 9, 15, 16, 22, 23, 29, 30],
-            [4, 5, 6, 12, 13, 19, 20, 26, 27],
-            [3, 4, 10, 11, 17, 18, 24, 25, 31]
-        ],
-        2017: [
-            [1, 2, 3, 4, 5, 6, 7, 8, 14, 15, 21, 22, 28, 29],
-            [4, 5, 11, 12, 18, 19, 23, 24, 25, 26],
-            [4, 5, 8, 11, 12, 18, 19, 25, 26],
-            [1, 2, 8, 9, 15, 16, 22, 23, 29, 30],
-            [6, 7, 13, 14, 20, 21, 27, 28],
-            [3, 4, 10, 11, 17, 18, 24, 25],
-            [1, 2, 8, 9, 15, 16, 22, 23, 29, 30],
-            [5, 6, 12, 13, 19, 20, 26, 27],
-            [2, 3, 9, 10, 16, 17, 23, 24, 30],
-            [1, 7, 8, 14, 15, 21, 22, 28, 29],
-            [4, 5, 6, 11, 12, 18, 19, 25, 26],
-            [2, 3, 9, 10, 16, 17, 23, 24, 30, 31]
-        ]
+    const holidays = {
+        2017: {
+            1: {1: HOLIDAY, 2: HOLIDAY, 3: HOLIDAY, 4: HOLIDAY, 5: HOLIDAY, 6: HOLIDAY, 7: HOLIDAY, 8: HOLIDAY, 14: DAY_OFF, 15: DAY_OFF, 21: DAY_OFF, 22: DAY_OFF, 28: DAY_OFF, 29: DAY_OFF},
+            2: {4: DAY_OFF, 5: DAY_OFF, 11: DAY_OFF, 12: DAY_OFF, 18: DAY_OFF, 19: DAY_OFF, 23: HOLIDAY, 24: DAY_OFF, 25: DAY_OFF, 26: DAY_OFF},
+            3: {4: DAY_OFF, 5: DAY_OFF, 8: HOLIDAY, 11: DAY_OFF, 12: DAY_OFF, 18: DAY_OFF, 19: DAY_OFF, 25: DAY_OFF, 26: DAY_OFF},
+            4: {1: DAY_OFF, 2: DAY_OFF, 8: DAY_OFF, 9: DAY_OFF, 15: DAY_OFF, 16: DAY_OFF, 22: DAY_OFF, 23: DAY_OFF, 29: DAY_OFF, 30: DAY_OFF},
+            5: {1: HOLIDAY, 6: DAY_OFF, 7: DAY_OFF, 8: DAY_OFF, 9: HOLIDAY, 13: DAY_OFF, 14: DAY_OFF, 20: DAY_OFF, 21: DAY_OFF, 27: DAY_OFF, 28: DAY_OFF},
+            6: {3: DAY_OFF, 4: DAY_OFF, 10: DAY_OFF, 11: DAY_OFF, 12: HOLIDAY, 17: DAY_OFF, 18: DAY_OFF, 24: DAY_OFF, 25: DAY_OFF},
+            7: {1: DAY_OFF, 2: DAY_OFF, 8: DAY_OFF, 9: DAY_OFF, 15: DAY_OFF, 16: DAY_OFF, 22: DAY_OFF, 23: DAY_OFF, 29: DAY_OFF, 30: DAY_OFF},
+            8: {5: DAY_OFF, 6: DAY_OFF, 12: DAY_OFF, 13: DAY_OFF, 19: DAY_OFF, 20: DAY_OFF, 26: DAY_OFF, 27: DAY_OFF},
+            9: {2: DAY_OFF, 3: DAY_OFF, 9: DAY_OFF, 10: DAY_OFF, 16: DAY_OFF, 17: DAY_OFF, 23: DAY_OFF, 24: DAY_OFF, 30: DAY_OFF},
+            10: {1: DAY_OFF, 7: DAY_OFF, 8: DAY_OFF, 14: DAY_OFF, 15: DAY_OFF, 21: DAY_OFF, 22: DAY_OFF, 28: DAY_OFF, 29: DAY_OFF},
+            11: {4: HOLIDAY, 5: DAY_OFF, 6: DAY_OFF, 11: DAY_OFF, 12: DAY_OFF, 18: DAY_OFF, 19: DAY_OFF, 25: DAY_OFF, 26: DAY_OFF},
+            12: {2: DAY_OFF, 3: DAY_OFF, 9: DAY_OFF, 10: DAY_OFF, 16: DAY_OFF, 17: DAY_OFF, 23: DAY_OFF, 24: DAY_OFF, 30: DAY_OFF, 31: DAY_OFF}
+        }
     };
 
-    return holidays[year] && holidays[year][month - 1];
+    return holidays[year] && holidays[year][month];
 }
 
 function isHoliday(year, month, day) {
-    return holidays(year, month).indexOf(day) !== -1;
+    return holidays(year, month)[day] === HOLIDAY;
+}
+
+function isDayOff(year, month, day) {
+    return holidays(year, month)[day] === DAY_OFF;
 }
 
 function daysInMonth(year, month) {
@@ -46,14 +38,14 @@ function daysInMonth(year, month) {
 }
 
 function workDaysInMonth(year, month) {
-    let holidaysInMonth = holidays(year, month);
-    return daysInMonth(year, month) - (holidaysInMonth || []).length;
+    let holidaysInMonth = Object.keys(holidays(year, month)).length;
+    return daysInMonth(year, month) - holidaysInMonth;
 }
 
 function salaryRatio(year, month, day) {
     let ratio;
 
-    if (isHoliday(year, month, day)) {
+    if (isHoliday(year, month, day) || isDayOff(year, month, day)) {
         ratio = 0;
     } else {
         ratio = 1 / workDaysInMonth(year, month);
@@ -62,14 +54,22 @@ function salaryRatio(year, month, day) {
     return ratio;
 }
 
-function sellingRatio() {
-    return 1 / 29.3;
+function sellingRatio(year, month, day) {
+    let ratio;
+
+    if (isHoliday(year, month, day)) {
+        ratio = 0;
+    } else {
+        ratio = 1 / 29.3;
+    }
+
+    return ratio
 }
 
 function salaryAndSelling(salary, avgSalary, year, month, day) {
     return {
         'salary': salary * salaryRatio(year, month, day),
-        'selling': avgSalary * sellingRatio()
+        'selling': avgSalary * sellingRatio(year, month, day)
     }
 }
 
