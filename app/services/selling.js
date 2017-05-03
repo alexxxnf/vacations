@@ -75,7 +75,8 @@ function salaryAndSelling(salary, avgSalary, year, month, day) {
 
 
 export default Ember.Service.extend({
-
+    isDayOff,
+    isHoliday,
     selling: function (salary, avgSalary, start_date, end_date) {
         let current_date = start_date;
         let data = [];

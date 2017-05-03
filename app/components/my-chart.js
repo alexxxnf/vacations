@@ -23,6 +23,7 @@ export default Ember.Component.extend({
         this._super(...arguments);
 
         let chart = AmCharts.makeChart(this.$()[0], {
+            "path": "/amcharts",
             "type": "serial",
             "theme": "light",
             "dataProvider": this.prepareData(this.get('model')),

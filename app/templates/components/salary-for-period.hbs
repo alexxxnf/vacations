@@ -1,1 +1,8 @@
-<p>Salary for the period: <b>{{salary}}</b>, Selling for the period: <b>{{selling}}</b>, Difference: <b>{{diff}}</b></p>
+<p>
+  Vacation time: <b>{{period}}</b> day(s)
+  {{~#if holidays}}, including <b>{{holidays}}</b> holiday(s){{/if}}
+</p>
+<p>
+  Salary: <b>{{salary}}</b>, Selling: <b>{{selling}}</b>, Difference: <b>{{diff}}</b>
+  {{#if profit}}PROFIT!!1{{/if}}
+</p>

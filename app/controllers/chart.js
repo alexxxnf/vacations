@@ -9,16 +9,8 @@ export default Ember.Controller.extend({
     }),
     actions: {
         updatePeriod(startIndex, endIndex) {
-            let vacation_days = this.get('model').slice(startIndex, endIndex + 1);
-            let total_salary = 0;
-            let total_selling = 0;
-
-            for (let day of vacation_days) {
-                total_salary += day.salary;
-                total_selling += day.selling;
-            }
-
-            this.setProperties({'salary_for_period': total_salary, 'selling_for_period': total_selling});
+            let vacation_days = this.get('model').slice(startIndex, endIndex);
+            this.set('vacation_days', vacation_days);
         }
     }
 });

@@ -20,8 +20,6 @@ export default Ember.Route.extend({
         controller.setProperties({
             'salary': this.get('params').salary,
             'avg_salary': this.get('params').avg_salary,
-            'salary_for_period': 0,
-            'selling_for_period': 0,
             'updateSalary': this.actions.updateSalary.bind(this),
         });
     },
