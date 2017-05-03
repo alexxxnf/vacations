@@ -5,30 +5,19 @@ export default Ember.Component.extend({
     style: Ember.String.htmlSafe('height: 500px;'),
     model_observer: Ember.observer('model', function (sender, key, value, rev) {
         let chart = this.get('chart');
-		chart.dataProvider = this.prepareData(this.get('model'));
-		chart.validateData();
+        chart.dataProvider = this.prepareData(this.get('model'));
+        chart.validateData();
     }),
-	prepareData(data) {
-		let res = data.map(value => ({
+    prepareData(data) {
+        let res = data.map(value => ({
             date: value.date,
             selling: Math.round(value.selling),
             salary: Math.round(value.salary)
         }));
-		return res;
-	},
+        return res;
+    },
     onSelected(e) {
-        console.log(this.get('model')[0]);
-        let vacation_days = this.get('model').slice(e.startIndex, e.endIndex + 1);
-        let total_salary = 0;
-        let total_selling = 0;
-
-        for (let day of vacation_days) {
-            total_salary += day.salary;
-            total_selling += day.selling;
-        }
-
-        console.log('salary', total_salary);
-        console.log('selling', total_selling);
+        let event = this.sendAction('updatePeriod', e.startIndex, e.endIndex + 1);
     },
     didInsertElement() {
         this._super(...arguments);
@@ -41,6 +30,8 @@ export default Ember.Component.extend({
                 "id": "v1",
                 "axisAlpha": 0,
                 "position": "left",
+                "includeAllValues": true,
+                "stackType": "3d",
             }],
             "balloon": {
                 "borderThickness": 1,
@@ -49,17 +40,21 @@ export default Ember.Component.extend({
             "graphs": [
                 {
                     "id": "g2",
-                    "lineThickness": 2,
+                    "lineThickness": 1,
                     "title": "Salary",
                     "type": "column",
                     "fillAlphas": 0.3,
                     "valueField": "salary",
+                    "balloonText": "Salary: [[value]]"
                 },
                 {
                     "id": "g1",
-                    "lineThickness": 2,
+                    "lineThickness": 1,
                     "title": "Selling",
+                    "type": "column",
+                    "fillAlphas": 0.3,
                     "valueField": "selling",
+                    "balloonText": "Selling: [[value]]"
                 },
             ],
             "chartScrollbar": {
@@ -78,24 +73,22 @@ export default Ember.Component.extend({
                 "color": "#AAAAAA"
             },
             "chartCursor": {
-                "valueLineEnabled": true,
-                "valueLineBalloonEnabled": true,
                 "cursorAlpha": 1,
                 "cursorColor": "#258cbb",
                 "listeners": [{
-                  "event": "selected",
-                  "method": this.onSelected.bind(this),
+                    "event": "selected",
+                    "method": this.onSelected.bind(this),
                 }],
                 "selectWithoutZooming": true,
-                "valueLineAlpha": 0.2,
+                "categoryBalloonDateFormat": "EEE MMM DD, YYYY",
             },
             "categoryField": "date",
             "categoryAxis": {
                 "parseDates": true,
                 "dashLength": 1,
-                "minorGridEnabled": true
+                "minorGridEnabled": true,
             },
-			"zoomOutOnDataUpdate": false,
+            "zoomOutOnDataUpdate": false,
         });
 
         chart.addListener("rendered", zoomChart);

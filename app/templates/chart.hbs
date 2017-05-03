@@ -5,11 +5,11 @@
 </div>
 <div class="row">
   <div class="col-md-12">
-    {{my-chart model=model}}
+    {{my-chart model=model updatePeriod=(action "updatePeriod")}}
   </div>
 </div>
 <div class="row">
   <div class="col-md-6">
-    <p>Salary for the period: <b>{{salary_for_period}}</b>, Selling for the period: <b>{{selling_for_period}}</b></p>
+    {{salary-for-period salary_for_period=salary_for_period selling_for_period=selling_for_period}}
   </div>
 </div>
