@@ -20,12 +20,6 @@ export default Ember.Route.extend({
         controller.setProperties({
             'salary': this.get('params').salary,
             'avg_salary': this.get('params').avg_salary,
-            'updateSalary': this.actions.updateSalary.bind(this),
         });
-    },
-    actions: {
-        updateSalary(salary, avg_salary) {
-            this.transitionTo(`/${salary}/${avg_salary}`);
-        }
     }
 });

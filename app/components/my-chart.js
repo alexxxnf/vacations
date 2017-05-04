@@ -17,7 +17,7 @@ export default Ember.Component.extend({
         return res;
     },
     onSelected(e) {
-        let event = this.sendAction('updatePeriod', e.startIndex, e.endIndex + 1);
+        this.sendAction('updatePeriod', e.startIndex, e.endIndex + 1);
     },
     didInsertElement() {
         this._super(...arguments);
