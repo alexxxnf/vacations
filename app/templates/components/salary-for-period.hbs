@@ -1,8 +1,8 @@
 <p>
-  Vacation time: <b>{{period}}</b> day(s)
-  {{~#if holidays}}, including <b>{{holidays}}</b> holiday(s){{/if}}
+  {{t "vacation_time"}}: {{t "day" count=period}}
+  {{~#if holidays}}{{t "including_holidays" count=holidays}}{{/if}}
 </p>
 <p>
-  Salary: <b>{{salary}}</b>, Selling: <b>{{selling}}</b>, Difference: <b>{{diff}}</b>
+  {{t "salary"}}: <b>{{salary}}</b>, {{t "selling"}}: <b>{{selling}}</b>, {{t "difference"}}: <b>{{diff}}</b>
   {{#if profit}}PROFIT!!1{{/if}}
 </p>

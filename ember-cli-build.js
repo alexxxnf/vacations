@@ -13,6 +13,7 @@ module.exports = function (defaults) {
     app.import('bower_components/amcharts3/amcharts/amcharts.js');
     app.import('bower_components/amcharts3/amcharts/serial.js');
     app.import('bower_components/amcharts3/amcharts/themes/light.js');
+    app.import('bower_components/amcharts3/amcharts/lang/ru.js');
 
     let amchartsImages = new Funnel('bower_components/amcharts3/amcharts/images', {
         srcDir: '/',

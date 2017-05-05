@@ -22,8 +22,17 @@ export default Ember.Component.extend({
     didInsertElement() {
         this._super(...arguments);
 
+        AmCharts.addInitHandler(function (chart) {
+            var num = 1234.56;
+            var format = num.toLocaleString();
+
+            chart.thousandsSeparator = format.replace(/1(.*)2.*/, '$1');
+            chart.decimalSeparator = format.replace(/.*4(.*)5.*/, '$1');
+        });
+
         let chart = AmCharts.makeChart(this.$()[0], {
             "path": "/assets/amcharts",
+            "language": (navigator.language || navigator.userLanguage).toLowerCase(),
             "type": "serial",
             "theme": "light",
             "dataProvider": this.prepareData(this.get('model')),
