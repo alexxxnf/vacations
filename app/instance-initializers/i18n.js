@@ -7,6 +7,7 @@ export default {
 }
 
 function calculateLocale(locales) {
-    const language = navigator.language || navigator.userLanguage;
-    return locales.includes(language.toLowerCase()) ? language : 'en';
+    const locale = navigator.language || navigator.userLanguage;
+    const language = locale.split('-')[0].toLowerCase();
+    return locales.includes(language) ? language : 'en';
 }

@@ -16,4 +16,6 @@ export default {
     "selling": "Отпускные",
     "difference": "Разница",
     "avg_salary": "Средняя зарплата",
+    "chart.salary_balloon": "Зарплата: [[value]]",
+    "chart.selling_balloon": "Отпускные: [[value]]",
 };

@@ -12,4 +12,6 @@ export default {
     "selling": "Selling",
     "difference": "Difference",
     "avg_salary": "Avg. Salary",
+    "chart.salary_balloon": "Salary: [[value]]",
+    "chart.selling_balloon": "Selling: [[value]]",
 };

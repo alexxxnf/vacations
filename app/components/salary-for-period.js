@@ -16,7 +16,9 @@ export default Ember.Component.extend({
         let vacation_days = this.get('vacation_days');
         let period = vacation_days.length;
 
-        for (let current_date of vacation_days) {
+        for (let i = 0, l = vacation_days.length; i < l; ++i) {
+            let current_date = vacation_days[i];
+
             salary += current_date.salary;
             selling += current_date.selling;
 

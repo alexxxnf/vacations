@@ -3,6 +3,7 @@ import Ember from 'ember';
 export default Ember.Component.extend({
     attributeBindings: ['style'],
     style: Ember.String.htmlSafe('height: 500px;'),
+    i18n: Ember.inject.service(),
     model_observer: Ember.observer('model', function (sender, key, value, rev) {
         let chart = this.get('chart');
         chart.dataProvider = this.prepareData(this.get('model'));
@@ -23,8 +24,8 @@ export default Ember.Component.extend({
         this._super(...arguments);
 
         AmCharts.addInitHandler(function (chart) {
-            var num = 1234.56;
-            var format = num.toLocaleString();
+            const num = 1234.56;
+            const format = num.toLocaleString();
 
             chart.thousandsSeparator = format.replace(/1(.*)2.*/, '$1');
             chart.decimalSeparator = format.replace(/.*4(.*)5.*/, '$1');
@@ -32,7 +33,7 @@ export default Ember.Component.extend({
 
         let chart = AmCharts.makeChart(this.$()[0], {
             "path": "/assets/amcharts",
-            "language": (navigator.language || navigator.userLanguage).toLowerCase(),
+            "language": this.get('i18n.locale'),
             "type": "serial",
             "theme": "light",
             "dataProvider": this.prepareData(this.get('model')),
@@ -55,7 +56,7 @@ export default Ember.Component.extend({
                     "type": "column",
                     "fillAlphas": 0.3,
                     "valueField": "salary",
-                    "balloonText": "Salary: [[value]]"
+                    "balloonText": this.get('i18n').t('chart.salary_balloon').toString(),
                 },
                 {
                     "id": "g1",
@@ -64,7 +65,7 @@ export default Ember.Component.extend({
                     "type": "column",
                     "fillAlphas": 0.3,
                     "valueField": "selling",
-                    "balloonText": "Selling: [[value]]"
+                    "balloonText": this.get('i18n').t('chart.selling_balloon').toString(),
                 },
             ],
             "chartScrollbar": {
