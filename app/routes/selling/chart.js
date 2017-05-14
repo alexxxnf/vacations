@@ -5,7 +5,8 @@ const DEFAULT_END_DATE = '2018-01-01';
 
 export default Ember.Route.extend({
     selling: Ember.inject.service('selling'),
-    model(params) {
+    model(_, transition) {
+        let params = transition.params['selling'];
         this.set('params', params);
 
         let start_date = new Date(DEFAULT_START_DATE);

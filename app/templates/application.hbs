@@ -1,3 +1,26 @@
+<nav class="navbar navbar-default navbar-static-top">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">NF Selling</a>
+    </div>
+    <div id="navbar">
+      <ul class="nav navbar-nav">
+        {{#link-to "selling.chart" tagName="li"}}
+          {{#link-to "selling.chart"}}Chart{{/link-to}}
+        {{/link-to}}
+        {{#link-to "selling.week_chart" tagName="li"}}
+          {{#link-to "selling.week_chart"}}Weekly Chart{{/link-to}}
+        {{/link-to}}
+        {{#link-to "selling.best" tagName="li"}}
+          {{#link-to "selling.best"}}Best{{/link-to}}
+        {{/link-to}}
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a>About</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
 <div class="container">
   {{outlet}}
 </div>
