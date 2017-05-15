@@ -6,17 +6,19 @@
     <div id="navbar">
       <ul class="nav navbar-nav">
         {{#link-to "selling.chart" tagName="li"}}
-          {{#link-to "selling.chart"}}Chart{{/link-to}}
+          {{#link-to "selling.chart"}}{{t "nav.chart"}}{{/link-to}}
         {{/link-to}}
         {{#link-to "selling.week_chart" tagName="li"}}
-          {{#link-to "selling.week_chart"}}Weekly Chart{{/link-to}}
+          {{#link-to "selling.week_chart"}}{{t "nav.week_chart"}}{{/link-to}}
         {{/link-to}}
         {{#link-to "selling.best" tagName="li"}}
-          {{#link-to "selling.best"}}Best{{/link-to}}
+          {{#link-to "selling.best"}}{{t "nav.best"}}{{/link-to}}
         {{/link-to}}
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a>About</a></li>
+        {{#link-to "selling.about" tagName="li"}}
+          {{#link-to "selling.about"}}{{t "nav.about"}}{{/link-to}}
+        {{/link-to}}
       </ul>
     </div>
   </div>

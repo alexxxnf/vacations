@@ -14,4 +14,8 @@ export default {
     "avg_salary": "Avg. Salary",
     "chart.salary_balloon": "Salary: [[value]]",
     "chart.selling_balloon": "Selling: [[value]]",
+    "nav.chart": "Chart",
+    "nav.week_chart": "Weekly Chart",
+    "nav.best": "Best Offer",
+    "nav.about": "About",
 };

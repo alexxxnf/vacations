@@ -18,4 +18,8 @@ export default {
     "avg_salary": "Средняя зарплата",
     "chart.salary_balloon": "Зарплата: [[value]]",
     "chart.selling_balloon": "Отпускные: [[value]]",
+    "nav.chart": "График",
+    "nav.week_chart": "Недельный график",
+    "nav.best": "Лучшее предложение",
+    "nav.about": "Эбаут",
 };
