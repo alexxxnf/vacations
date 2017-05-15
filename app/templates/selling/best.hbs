@@ -1,1 +1,15 @@
-{{outlet}}
+<div class="row">
+    <div class="col-md-12">
+      {{vacation-time-input vacations_length=vacations_length}}
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+      {{vacation-time-top model=top_profit_dates}}
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+      {{diff-chart model=model vacations_length=vacations_length}}
+    </div>
+</div>

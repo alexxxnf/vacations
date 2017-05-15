@@ -1,0 +1,23 @@
+<h4>{{t "vacation_time_top.most_profitable_dates"}}</h4>
+<table class="table table-striped">
+    <thead>
+      <tr>
+          <th>{{t "vacation_time_top.table.profit"}}</th>
+          <th>{{t "vacation_time_top.table.date_start"}}</th>
+          <th>{{t "vacation_time_top.table.date_end"}}</th>
+          <th>{{t "vacation_time_top.table.holidays"}}</th>
+          <th>{{t "vacation_time_top.table.day_offs"}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each rounded_model as |date|}}
+          <tr>
+              <td><b>{{date.diff}}</b></td>
+              <td>{{date.start_date}}</td>
+              <td>{{date.end_date}}</td>
+              <td>{{date.holidays}}</td>
+              <td>{{date.day_offs}}</td>
+          </tr>
+      {{/each}}
+    </tbody>
+</table>

@@ -19,6 +19,9 @@ function holidays(year, month) {
             10: {1: DAY_OFF, 7: DAY_OFF, 8: DAY_OFF, 14: DAY_OFF, 15: DAY_OFF, 21: DAY_OFF, 22: DAY_OFF, 28: DAY_OFF, 29: DAY_OFF},
             11: {4: HOLIDAY, 5: DAY_OFF, 6: DAY_OFF, 11: DAY_OFF, 12: DAY_OFF, 18: DAY_OFF, 19: DAY_OFF, 25: DAY_OFF, 26: DAY_OFF},
             12: {2: DAY_OFF, 3: DAY_OFF, 9: DAY_OFF, 10: DAY_OFF, 16: DAY_OFF, 17: DAY_OFF, 23: DAY_OFF, 24: DAY_OFF, 30: DAY_OFF, 31: DAY_OFF}
+        },
+        2018: {
+            1: {1: HOLIDAY, 2: HOLIDAY, 3: HOLIDAY, 4: HOLIDAY, 5: HOLIDAY, 6: HOLIDAY, 7: HOLIDAY, 8: HOLIDAY},
         }
     };
 
@@ -26,11 +29,13 @@ function holidays(year, month) {
 }
 
 function isHoliday(year, month, day) {
-    return holidays(year, month)[day] === HOLIDAY;
+    let month_holidays = holidays(year, month);
+    return month_holidays && month_holidays[day] === HOLIDAY;
 }
 
 function isDayOff(year, month, day) {
-    return holidays(year, month)[day] === DAY_OFF;
+    let month_holidays = holidays(year, month);
+    return month_holidays && month_holidays[day] === DAY_OFF;
 }
 
 function daysInMonth(year, month) {

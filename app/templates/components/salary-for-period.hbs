@@ -1,6 +1,12 @@
 <p>
-  {{t "vacation_time"}}: {{t "day" count=period}}
-  {{~#if holidays}}{{t "including_holidays" count=holidays}}{{/if}}
+  {{t "vacation_time"}}: {{t "count.days" count=period}}
+  {{~#if (and holidays day_offs)~}}
+    {{t "including_holidays_and_day_offs" holidays=(t "count.holidays" count=holidays) day_offs=(t "count.day_offs" count=day_offs)}}
+  {{~else if holidays~}}
+    {{t "including_holidays_or_day_offs" holidays=(t "count.holidays" count=holidays)}}
+  {{~else if day_offs~}}
+    {{t "including_holidays_or_day_offs" holidays=(t "count.day_offs" count=day_offs)}}
+  {{/if}}
 </p>
 <p>
   {{t "salary"}}: <b>{{salary}}</b>, {{t "selling"}}: <b>{{selling}}</b>, {{t "difference"}}: <b>{{diff}}</b>
