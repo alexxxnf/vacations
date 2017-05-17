@@ -1,10 +1,14 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-    salary_observer: Ember.observer('salary', function (sender, key, value, rev) {
-        this.transitionToRoute('selling.chart', sender.get('salary'), sender.get('avg_salary'));
-    }),
-    avg_salary_observer: Ember.observer('avg_salary', function (sender, key, value, rev) {
-        this.transitionToRoute('selling.chart', sender.get('salary'), sender.get('avg_salary'));
-    }),
+    actions: {
+        'changeSalary': function (salary, avg_salary) {
+            let dirty_hack = Ember.getOwner(this).lookup('controller:application');
+            let current_route = dirty_hack.currentPath;
+            let current_params = dirty_hack.target.currentState.routerJsState.params[current_route];
+            let new_params = [current_route, salary, avg_salary].concat(Object.values(current_params));
+
+            this.transitionToRoute.apply(this, new_params);
+        }
+    }
 });

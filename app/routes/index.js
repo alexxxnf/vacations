@@ -1,4 +1,4 @@
-    import Ember from 'ember';
+import Ember from 'ember';
 
 const DEFAULT_SALARY = '50000';
 const DEFAULT_AVG_SALARY = '50000';
