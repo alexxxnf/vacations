@@ -1,25 +1,34 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>NfSelling</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>NfSelling</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script>
+            (function () {
+                var redirect = sessionStorage.redirect;
+                delete sessionStorage.redirect;
+                if (redirect && redirect != location.href) {
+                    history.replaceState(null, null, redirect);
+                }
+            })();
+        </script>
 
-    {{content-for "head"}}
+        {{content-for "head"}}
 
-    <link rel="stylesheet" href="{{rootURL}}assets/vendor.css">
-    <link rel="stylesheet" href="{{rootURL}}assets/nf-selling.css">
+        <link rel="stylesheet" href="{{rootURL}}assets/vendor.css">
+        <link rel="stylesheet" href="{{rootURL}}assets/nf-selling.css">
 
-    {{content-for "head-footer"}}
-  </head>
-  <body>
+        {{content-for "head-footer"}}
+    </head>
+    <body>
     {{content-for "body"}}
 
     <script src="{{rootURL}}assets/vendor.js"></script>
     <script src="{{rootURL}}assets/nf-selling.js"></script>
 
     {{content-for "body-footer"}}
-  </body>
+    </body>
 </html>
