@@ -18,7 +18,6 @@ export default {
     "nav": {
         "chart": "Chart",
         "best": "Best Offer",
-        "about": "About",
     },
     "vacation_time_top": {
         "most_profitable_dates": "Most profitable vacation dates",

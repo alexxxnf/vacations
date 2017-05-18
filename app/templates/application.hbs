@@ -1,7 +1,7 @@
 <nav class="navbar navbar-default navbar-static-top">
   <div class="container">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">NF Vacations</a>
+      {{#link-to "index" class="navbar-brand"}}NF Vacations{{/link-to}}
     </div>
     <div id="navbar">
       <ul class="nav navbar-nav">
@@ -10,11 +10,6 @@
         {{/link-to}}
         {{#link-to "selling.best" "14" tagName="li"}}
           {{#link-to "selling.best" "14"}}{{t "nav.best"}}{{/link-to}}
-        {{/link-to}}
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        {{#link-to "selling.about" tagName="li"}}
-          {{#link-to "selling.about"}}{{t "nav.about"}}{{/link-to}}
         {{/link-to}}
       </ul>
     </div>

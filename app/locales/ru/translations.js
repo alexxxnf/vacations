@@ -20,7 +20,6 @@ export default {
     "nav": {
         "chart": "График",
         "best": "Лучшее предложение",
-        "about": "Эбаут",
     },
     "vacation_time_top": {
         "most_profitable_dates": "Наиболее выгодные даты отпуска",

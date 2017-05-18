@@ -10,7 +10,6 @@ Router.map(function () {
     this.route('selling', {path: '/:salary/:avg_salary'}, function () {
         this.route('chart', {path: '/chart'});
         this.route('best', {path: '/best/:vacations_length'});
-        this.route('about', {path: '/about'});
     });
 });
 
