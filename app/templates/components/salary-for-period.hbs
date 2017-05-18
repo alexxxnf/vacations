@@ -1,6 +1,6 @@
 <p>
   {{t "vacation_time"}}: {{t "count.days" count=period}}
-  {{~#if (and holidays day_offs)~}}
+  {{~#if holidays_and_day_offs~}}
     {{t "including_holidays_and_day_offs" holidays=(t "count.holidays" count=holidays) day_offs=(t "count.day_offs" count=day_offs)}}
   {{~else if holidays~}}
     {{t "including_holidays_or_day_offs" holidays=(t "count.holidays" count=holidays)}}

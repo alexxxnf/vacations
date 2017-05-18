@@ -7,6 +7,8 @@ export default Ember.Component.extend({
     diff: 0,
     period: 0,
     holidays: 0,
+    day_offs: 0,
+    holidays_and_day_offs: false,
     profit: false,
     vacancy_observer: Ember.observer('vacation_days', function (sender, key, value, rev) {
         let salary = 0;
@@ -35,6 +37,7 @@ export default Ember.Component.extend({
 
         let diff = selling - salary;
         let profit = diff > 0;
+        let holidays_and_day_offs = holidays && day_offs;
 
         this.setProperties({
             salary: Math.round(salary),
@@ -43,6 +46,7 @@ export default Ember.Component.extend({
             period,
             holidays,
             day_offs,
+            holidays_and_day_offs,
             profit,
         });
     }),
