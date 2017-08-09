@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 const DEFAULT_START_DATE = '2017-01-01';
-const DEFAULT_END_DATE = '2018-01-01';
+const DEFAULT_END_DATE = '2019-01-01';
 
 export default Ember.Route.extend({
     selling: Ember.inject.service('selling'),
