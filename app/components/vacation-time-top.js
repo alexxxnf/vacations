@@ -34,7 +34,7 @@ export default Ember.Component.extend({
 
             return {
                 diff: Math.round(val.diff).toLocaleString(),
-                start_date: AmCharts.formatDate(val.start_date, 'EEE MMM DD', fake_chart),
+                start_date: AmCharts.formatDate(val.start_date, 'EEE MMM DD YYYY', fake_chart),
                 end_date: AmCharts.formatDate(val.end_date, 'MMM DD', fake_chart),
                 holidays,
                 day_offs,
