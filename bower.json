@@ -1,7 +1,0 @@
-{
-  "name": "nf-selling",
-  "dependencies": {
-    "amcharts3": "^3.21.1",
-    "bootstrap": "^3.3.7"
-  }
-}
