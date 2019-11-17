@@ -47,7 +47,7 @@ export default {
         "days": {
             "one": "<b>{{count}}</b> день",
             "few": "<b>{{count}}</b> дня",
-            "many": "<b>{{count}}</b> деней",
+            "many": "<b>{{count}}</b> дней",
             "other": "<b>{{count}}</b> дня",
         },
     },
