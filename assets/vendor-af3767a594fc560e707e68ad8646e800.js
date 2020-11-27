@@ -5281,7 +5281,7 @@ if(a&&(a=this.chooseModuleName(a,e)),a&&this._moduleRegistry.has(a)&&(r=a),t||th
 if(e!==r&&this._moduleRegistry.has(e)&&this._moduleRegistry.has(r))throw new TypeError("Ambiguous module names: '"+e+"' and '"+r+"'")
 if(this._moduleRegistry.has(e))return e
 if(this._moduleRegistry.has(r))return r
-var n=e.replace(/\/-([^\/]*)$/,"/_$1")
+var n=e.replace(/\/-([^/]*)$/,"/_$1")
 if(this._moduleRegistry.has(n))return Ember.deprecate('Modules should not contain underscores. Attempted to lookup "'+e+'" which was not found. Please rename "'+n+'" to "'+e+'" instead.',!1,{id:"ember-resolver.underscored-modules",until:"3.0.0"}),n
 Ember.runInDebug(function(){"helper"===t.type&&/[a-z]+[A-Z]+/.test(e)&&(i._camelCaseHelperWarnedNames=i._camelCaseHelperWarnedNames||[],!(i._camelCaseHelperWarnedNames.indexOf(t.fullName)>-1)&&i._moduleRegistry.has(h(e))&&(i._camelCaseHelperWarnedNames.push(t.fullName),Ember.warn('Attempted to lookup "'+t.fullName+'" which was not found. In previous versions of ember-resolver, a bug would have caused the module at "'+h(e)+'" to be returned for this camel case helper name. This has been fixed. Use the dasherized name to resolve the module that would have been returned in previous versions.',!1,{id:"ember-resolver.camelcase-helper-names",until:"3.0.0"})))})},lookupDescription:function(e){var t=this.parseName(e)
 return this.findModuleName(t,!0)},_logLookup:function(e,t,i){if(Ember.ENV.LOG_MODULE_RESOLVER||t.root.LOG_RESOLVER){var r=void 0,n=e?"[✓]":"[ ]"
